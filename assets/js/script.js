@@ -27,7 +27,8 @@ const toDo = localStorage.getItem('tasks');
 
     
     $('.time-block').each(function() {
-      let blockHour = parseInt($(this).attr('id'));
+      let blockHour = parseInt($(this).attr('id').replace('div', ''));
+      
      
       $(this).removeClass('past present future');
 
@@ -62,7 +63,9 @@ const toDo = localStorage.getItem('tasks');
     function displayToDo(){
       Object.keys(taskInput).forEach(function(key){
           let items = taskInput[key];
-          let itemSpace = document.querySelector(`#${key} .description`);
+          let itemSpace = document.querySelector(`#div${key} .description`);
+          console.log(itemSpace)
+          console.log(items)
           if(itemSpace){
             itemSpace.value = items;
           }
