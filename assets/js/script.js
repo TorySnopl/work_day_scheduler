@@ -7,6 +7,7 @@ let dayJsObject = dayjs();
 let dateEl = document.querySelector('#currentDay');
 dateEl.textContent = dayJsObject.format("MM/D/YYYY hh:mm A");
 
+//variables
 let saveBtn = document.querySelectorAll('.saveBtn');
 let taskInput = JSON.parse(localStorage.getItem('tasks')) || {};
 const toDo = localStorage.getItem('tasks');
@@ -23,7 +24,7 @@ const toDo = localStorage.getItem('tasks');
     
     let currentHour = dayjs().hour();
 
-    localStorage.getItem('input');
+    
 
     
     $('.time-block').each(function() {
@@ -53,7 +54,7 @@ const toDo = localStorage.getItem('tasks');
   
 
  
-
+//If statement and displayToDo function show tasks in local storage
   if (toDo){
     taskInput = JSON.parse(toDo);
     displayToDo();
@@ -63,7 +64,7 @@ const toDo = localStorage.getItem('tasks');
     function displayToDo(){
       Object.keys(taskInput).forEach(function(key){
           let items = taskInput[key];
-          let itemSpace = document.querySelector(`#div${key} .description`);
+          let itemSpace = document.querySelector(`#${key} .description`);
           console.log(itemSpace)
           console.log(items)
           if(itemSpace){
@@ -76,7 +77,7 @@ const toDo = localStorage.getItem('tasks');
   
 
   
-  
+  // Event listener for save button to confirm task and save to local storage
   saveBtn.forEach(function(btn) {
     btn.addEventListener('click', function() {
       
