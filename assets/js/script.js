@@ -8,7 +8,13 @@ let dateEl = document.querySelector('#currentDay');
 dateEl.textContent = dayJsObject.format("MM/D/YYYY hh:mm A");
 
 let saveBtn = document.querySelectorAll('.saveBtn');
-let inputField = '';
+let taskInput = JSON.parse(localStorage.getItem('tasks')) || {};
+
+const toDo = localStorage.getItem('tasks');
+if (toDo){
+  taskInput = JSON.parse(toDo);
+};
+
 
 
 
@@ -19,13 +25,13 @@ let inputField = '';
 // function to update classes on the calendar every minute
   function updateBlockClasses() {
     
-    var currentHour = dayjs().hour();
+    let currentHour = dayjs().hour();
 
     localStorage.getItem('input');
 
     
     $('.time-block').each(function() {
-      var blockHour = parseInt($(this).attr('id'));
+      let blockHour = parseInt($(this).attr('id'));
      
       $(this).removeClass('past present future');
 
@@ -60,11 +66,14 @@ let inputField = '';
       
       inputField = btn.previousElementSibling;
 
-      let task = inputField.value;
+      let task = inputField.value.trim();
       
-      alert('Task Saved: ' + task);
-
-      localStorage.setItem('input', task);
+      if (task !== '') {
+        let divId = inputField.closest('.time-block').id;
+        taskInput[divId] = task;
+        localStorage.setItem('tasks', JSON.stringify(taskInput) );
+        alert ('Task Saved:' + task);
+      }
       
       
     
