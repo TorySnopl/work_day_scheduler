@@ -9,11 +9,7 @@ dateEl.textContent = dayJsObject.format("MM/D/YYYY hh:mm A");
 
 let saveBtn = document.querySelectorAll('.saveBtn');
 let taskInput = JSON.parse(localStorage.getItem('tasks')) || {};
-
 const toDo = localStorage.getItem('tasks');
-if (toDo){
-  taskInput = JSON.parse(toDo);
-};
 
 
 
@@ -55,12 +51,29 @@ if (toDo){
   setInterval(updateBlockClasses, 60000);
   
 
-  // function to iterate over button node list and save input
-
  
+
+  if (toDo){
+    taskInput = JSON.parse(toDo);
+    displayToDo();
+  };
+  
+  
+    function displayToDo(){
+      Object.keys(taskInput).forEach(function(key){
+          let items = taskInput[key];
+          let itemSpace = document.querySelector(`#${key} .description`);
+          if(itemSpace){
+            itemSpace.value = items;
+          }
+      });
+    
+    }
 
   
 
+  
+  
   saveBtn.forEach(function(btn) {
     btn.addEventListener('click', function() {
       
@@ -81,6 +94,9 @@ if (toDo){
   });
 
 
+
+
+  
 
 
   
