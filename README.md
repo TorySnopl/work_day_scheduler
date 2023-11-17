@@ -41,6 +41,9 @@ the `displayToDo()` function takes care of that.
 
 This was a fun project because i used way less javascript to accomplish the task than I first anticipated. I really see the value in third party api's such as bootstrap, dayJs, and jQuery. I think jQuery provides a very useful way to traverse the DOM. For example in line 84 of my script.js file, I thought being able to call `btn.previousElementSibling` was almost a cheat. I also learned a new way of using the `document.querySelector` on line 67 by comparing the key in the array to the id of the div. Overall it was a very useful project
 
+## Screenshot
+![Homepage](./assets/images/homepage.jpg)
+
 ## Deployed Application
 [Simple Calendar Web App](https://torysnopl.github.io/work_day_scheduler/)
 
